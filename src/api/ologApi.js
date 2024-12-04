@@ -170,12 +170,19 @@ export const ologApi = createApi({
         }),
         login: builder.mutation({
             query: ({username, password}) => {
-                return {
-                    url: "/login",
-                    method: 'POST',
-                    body: {"username": username, "password": password}
-                }
-            }
+                // Use URLSearchParams to encode the form data
+        const formData = new URLSearchParams();
+        formData.append("username", username);
+        formData.append("password", password);
+
+        return {
+            url: "/login",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded", // Indicate form-data
+            },
+            body: formData.toString(), // Convert formData to a string for the request body
+        }}
         }),
         logout: builder.mutation({
             query: () => ({
