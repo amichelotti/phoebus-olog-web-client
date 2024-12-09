@@ -1,3 +1,7 @@
+const webpack = require('webpack');
+const path = require('path');
+require('dotenv').config(); // Load environment variables from .env file
+
 module.exports = {
     
     devServer: {
@@ -6,3 +10,4 @@ module.exports = {
       },
     },
   };
+  
