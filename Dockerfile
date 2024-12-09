@@ -4,7 +4,7 @@ RUN apk update && apk add curl bash
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY . ./
-RUN npm ci --silent
+RUN npm ci
 
 # start app
 CMD ["npm", "start"]
